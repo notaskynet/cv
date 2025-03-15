@@ -32,4 +32,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git add resume.pdf
           git commit -m "Auto-compiled resume PDF" || echo "No changes to commit"
+          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
           git push
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
